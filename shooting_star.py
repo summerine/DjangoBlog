@@ -1,0 +1,5 @@
+print("Hello Shooting Star")
+print("Hello Shooting Star again")
+print("matte iru yo")
+print("yume wo miru anata wa zutto")
+print("koko ni iru no")

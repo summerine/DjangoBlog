@@ -1,22 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Testing Blog</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet"  href="{% static '/css/blog.css' %}" type="text/css">
 </head>
 <body>
 	<div>
 		<h1><a href="/">Testing Blog</a></h1>
 	</div>
 	<div>
-		<p>Published: 19.02.2019, 16:07 PM</p>
-		<h2><a href="/">My First Post</a></h2>
-		<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h2>This is a blog</h2>
 	</div>
-
+	{% for post in posts %}
+		<div>
+			<p>Created: {{post.created_date}}</p>
+			<p><a href="">{{ post.title }}</a></p>
+			<p>{{ post.text|linebreaksbr }}</p>
+		</div>	
+	{% endfor %}	
 </body>
 </html>

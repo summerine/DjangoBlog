@@ -1,24 +1,29 @@
+{% extends 'blog/base.html' %}
+
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Testing Blog</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet"  href="{% static '/css/blog.css' %}" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+	<link rel="stylesheet"  href="{% static 'css/blog.css' %}">
 </head>
 <body>
-	<div>
-		<h1><a href="/">Testing Blog</a></h1>
+	<div class="page-header">
+		<h1><a href="">Testing Blog</a></h1>
 	</div>
-	<div>
-		<h2>This is a blog</h2>
-	</div>
-	{% for post in posts %}
-		<div>
-			<p>Created: {{post.created_date}}</p>
-			<p><a href="">{{ post.title }}</a></p>
-			<p>{{ post.text|linebreaksbr }}</p>
-		</div>	
-	{% endfor %}	
+			{% block content %}
+				{% for post in posts %}
+					<div class="post">
+						<div class="date">
+							<p>Created Date: {{ post.created_date }}</p>
+						</div>
+							<p><a href="{% url 'post_detail' pk=post.pk %}">Post Title: {{ post.title }}</a></p>
+							<p>{{ post.text | linebreaksbr }}</p>
+						</div>
+			
+			{% endfor %}
+		{% endblock %}
 </body>
 </html>
